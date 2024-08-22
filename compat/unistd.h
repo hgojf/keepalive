@@ -3,4 +3,5 @@
 #include_next <unistd.h>
 
 int getdtablecount(void);
+int getdtablesize(void);
 #endif /* KEEPALIVE_COMPAT_UNISTD_H */

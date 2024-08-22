@@ -13,7 +13,8 @@ MACRO(REPLACE_FUNCTIONS sources)
 	ENDFOREACH(name)
 ENDMACRO(REPLACE_FUNCTIONS)
 
-REPLACE_FUNCTIONS(COMPAT_SOURCES explicit_bzero freezero getdtablecount reallocarray recallocarray strtonum)
+REPLACE_FUNCTIONS(COMPAT_SOURCES explicit_bzero freezero getdtablesize 
+	getdtablecount reallocarray recallocarray strtonum)
 
 include_directories(${CMAKE_SOURCE_DIR})
 include_directories(SYSTEM ${CMAKE_SOURCE_DIR}/compat)
