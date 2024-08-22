@@ -1,0 +1,13 @@
+#!/bin/ksh
+#
+# taken from openbsd 7.5 /etc/rc.d/unwind
+
+daemon="/usr/local/bin/keepalived"
+
+. /etc/rc.d/rc.subr
+
+rc_configtest() {
+	rc_exec "${daemon} -n ${daemon_flags}"
+}
+
+rc_cmd $1
