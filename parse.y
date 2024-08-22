@@ -2,6 +2,7 @@
 #include <err.h>
 #include <netdb.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "keepalived.h"
@@ -9,6 +10,7 @@
 extern int yylex(void);
 extern void yylex_destroy(void);
 
+static int client_addr(const char *);
 static int listen_on(const char *, int);
 void yyerror(const char *);
 int yywrap(void);
