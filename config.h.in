@@ -1,0 +1,11 @@
+#ifndef KEEPALIVE_CONFIG_H
+#define KEEPALIVE_CONFIG_H
+#define _GNU_SOURCE
+
+#ifndef pledge
+#define pledge(a,b) 0
+#endif /* pledge */
+#ifndef unveil
+#define unveil(a,b) 0
+#endif /* unveil */
+#endif /* KEEPALIVE_CONFIG_H */

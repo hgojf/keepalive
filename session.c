@@ -216,6 +216,7 @@ parent_dispatch_imsg(struct session *session, struct imsg *msg)
 	}
 	case IMSG_SESSION_LISTENER: {
 		struct sockaddr_storage ss;
+		socklen_t ss_len;
 		struct listener *listener;
 		int s;
 
@@ -235,7 +236,17 @@ parent_dispatch_imsg(struct session *session, struct imsg *msg)
 			return -1;
 		}
 
-		if (bind(s, (struct sockaddr *)&ss, ss.ss_len) == -1) {
+		switch (ss.ss_family) {
+		case AF_INET:
+			ss_len = sizeof(struct sockaddr_in);
+			break;
+		case AF_INET6:
+			ss_len = sizeof(struct sockaddr_in6);
+			break;
+		default:
+			assert(0);
+		}
+		if (bind(s, (struct sockaddr *)&ss, ss_len) == -1) {
 			warn("bind");
 			close(s);
 			return -1;
