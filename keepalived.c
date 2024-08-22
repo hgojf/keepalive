@@ -151,7 +151,7 @@ session_cb(int fd, short event, void *arg)
 	if ((n = imsg_read(&session->msgbuf)) == -1) {
 		if (errno == EAGAIN)
 			return;
-		warn("imsg_read EOF");
+		warn("imsg_read");
 		goto abort;
 	}
 
