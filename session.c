@@ -244,7 +244,9 @@ parent_dispatch_imsg(struct session *session, struct imsg *msg)
 			ss_len = sizeof(struct sockaddr_in6);
 			break;
 		default:
-			assert(0);
+			warnx("parent sent bogus sockaddr");
+			close(s);
+			return -1;
 		}
 		if (bind(s, (struct sockaddr *)&ss, ss_len) == -1) {
 			warn("bind");
