@@ -392,7 +392,7 @@ static int
 sockaddr_cmp(struct sockaddr_storage *one, struct sockaddr_storage *two)
 {
 	if (one->ss_family != two->ss_family)
-		return 0;
+		return 1;
 
 	switch (one->ss_family) {
 	case AF_INET: {
@@ -406,7 +406,7 @@ sockaddr_cmp(struct sockaddr_storage *one, struct sockaddr_storage *two)
 		return memcmp(&n1->sin6_addr, &n2->sin6_addr, sizeof(n1->sin6_addr));
 	}
 	default:
-		return 0;
+		return 1;
 	}
 }
 
