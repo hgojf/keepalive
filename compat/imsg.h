@@ -19,8 +19,11 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#ifndef _IMSG_H_
-#define _IMSG_H_
+#ifndef MAILZ_COMPAT_IMSG_H
+#define MAILZ_COMPAT_IMSG_H
+#ifdef HAVE_IMSG
+#include_next <imsg.h>
+#else
 
 #include <sys/types.h>
 
@@ -157,4 +160,5 @@ void	 imsg_free(struct imsg *);
 int	 imsg_flush(struct imsgbuf *);
 void	 imsg_clear(struct imsgbuf *);
 
+#endif /* HAVE_IMSG */
 #endif

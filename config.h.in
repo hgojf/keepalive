@@ -1,11 +1,10 @@
 #ifndef KEEPALIVE_CONFIG_H
 #define KEEPALIVE_CONFIG_H
 #define _GNU_SOURCE
-
-#ifndef pledge
+#ifndef __OpenBSD__
 #define pledge(a,b) 0
-#endif /* pledge */
-#ifndef unveil
 #define unveil(a,b) 0
-#endif /* unveil */
+#endif /* __OpenBSD__ */
+
+#cmakedefine HAVE_IMSG
 #endif /* KEEPALIVE_CONFIG_H */
