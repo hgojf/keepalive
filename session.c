@@ -98,6 +98,8 @@ listener_cb(int fd, short event, void *arg)
 	if ((n = recvfrom(fd, &byte, 1, 0, (struct sockaddr *)&ss, &ss_len)) == -1) {
 		if (errno == EAGAIN)
 			return;
+		warn("recvfrom");
+		goto abort;
 	}
 
 	/* dont care whats in the byte (if one was received) */
