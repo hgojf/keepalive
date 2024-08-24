@@ -94,6 +94,7 @@ listener_cb(int fd, short event, void *arg)
 
 	assert(session->state >= STATE_LISTEN);
 
+	ss_len = sizeof(ss);
 	if ((n = recvfrom(fd, &byte, 1, 0, (struct sockaddr *)&ss, &ss_len)) == -1) {
 		if (errno == EAGAIN)
 			return;
