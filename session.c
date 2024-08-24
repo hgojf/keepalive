@@ -100,9 +100,7 @@ listener_cb(int fd, short event, void *arg)
 			return;
 	}
 
-	assert(n == 1); /* not possible? */
-
-	/* dont care whats in the byte */
+	/* dont care whats in the byte (if one was received) */
 
 	for (size_t i = 0; i < session->nclient; i++) {
 		if (sockaddr_cmp(&ss, &session->clients[i]) != 0)
